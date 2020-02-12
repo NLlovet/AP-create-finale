@@ -1,0 +1,59 @@
+html{
+    background-color: #ADD8E6;
+  }
+  
+  .center{
+    text-align: center;
+  }
+  
+  .red{
+    background-color: red;
+  }
+  
+  .yellow {
+    background-color: yellow;
+  }
+  
+  .green{
+    background-color: green;
+  }
+  
+  .box {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .goButton{
+    padding-top: 5px;
+    height: 20px;
+    width: 30px;
+  }
+  
+  #demonstrate{
+  
+    border: black 5px;
+    white-space: nowrap;
+  }
+  
+  #strengthsColor{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+  }
+  
+  #strengthsText{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+  }
+  
+  #passGen{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+  }
+  
+  #noSpace{
+    margin-left: -19%;
+    margin-top: 0.5%;
+  }

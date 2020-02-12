@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+
+    <h1 class="center">Check Your Password</h1>
+    <!--  This is where the color background would change-->
+
+    <div id="demonstrate">
+
+        <p class="center"> color indicates your password security </p>
+
+        <div id="strengthsColor">
+            <div class="red box"></div>
+            <div class="yellow box"></div>
+            <div class="green box"></div>
+        </div>
+        <div id="strengthsText">
+            <p> Weak </p>
+            <p> Medium </p>
+            <p> Strong </p>
+        </div>
+    </div>
+
+    <!--  User puts in password here for checking-->
+    <div class="center">
+        <input type="text" id="pwd" placeholder="Enter password here" />
+
+        <img class="goButton" id="go"
+            src="https://www.netclipart.com/pp/m/0-8811_arrow-clipart-printable-transparent-background-white-arrow-png.png">
+        <div>
+
+            <!-- User makes a password here -->
+            <h1 class="center"> Make a password </h1>
+
+            <div id="passGen">
+                <button id="scramble"> Click here to let us make you one </button>
+                <p> or </p>
+                <input type="text" id="wordPhrase" placeholder="Enter a word"> </input>
+                <div id="noSpace">
+
+                    <img class="goButton" id="goMake"
+                        src="https://www.netclipart.com/pp/m/0-8811_arrow-clipart-printable-transparent-background-white-arrow-png.png" />
+                </div>
+            </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
