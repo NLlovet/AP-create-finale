@@ -1,8 +1,7 @@
 // All the variables that activate the program
 let array = [];
 let finalScore = 0;
-let scramble = false;
-let specialChars = /[^A-Z a-z0-9]/;
+let specialChars = /[^A-Z a-z 0-9]/;
 let upperCase = false;    
 let lowerCase = false;
 let hasNums = false;
@@ -19,13 +18,16 @@ function checkPass() {
     let password = document.getElementById('pwd').value;
 
     setArray(password);
-    console.log("password obtained")
-    checkSym();
-    console.log("Checked upper and lower case")
-    checkCase();
-    console.log("check symbols ran")
 
-// --------------------- change the path of how this works --------------------
+    // Checks for any special characters
+    checkSym();
+    // Checks for numbers
+    checkNums();
+    // Checks upper and lower case
+    checkCase();
+    // gauges strength and gives an answer to user
+    strength();
+
 }
 
 // sets string into an array
@@ -48,7 +50,7 @@ function checkCase() {
             else {
                 lowerCase = true;
             }
-            
+            array.splice(i,1);
         }
 
     }
@@ -56,9 +58,11 @@ function checkCase() {
 
 // checks for nums
 function checkNums() {
-    for (let i = 0; i < array.length; i++) {
-        if (Number.isFinite(array[i])) {
+    for (let i = 0; i <= array.length; i++) {
+        if (!isNaN(array[i])) {
             hasNums = true;
+            array.splice(i,1);
+            i--;
         }
     }
 }
@@ -66,11 +70,11 @@ function checkNums() {
 // looks for symbols
 function checkSym() {
     for (let i = 0; i < array.length; i++) {
-        // for (let j = 0; j < specialChars.length; j++) {
             if (specialChars.test(array[i])) {
                 console.log(`${array[i]} is a special character`)
                 hasSyms = true;
-            // }
+                array.splice(i,1);
+               
         }
 
     }
@@ -79,8 +83,65 @@ function checkSym() {
 
 // evaluates the strength
 function strength() {
+    finalScore = 0;
+
+    // Weak is 0-1
+    // Medium is 2-3
+    // Strong is 4 
+
+    if (upperCase){
+        finalScore++;
+    }   
+    
+    if (lowerCase){
+        finalScore++;
+    }
+    
+    if (hasNums){
+        finalScore++;
+    }
+    
+    if (hasSyms){
+        finalScore++;
+    }
+
+    let finalColor = document.getElementById('demonstrate');
+    finalColor.className = "";
+    
+    switch(finalScore){
+        case 1:
+            finalColor.innerHTML = "WEAK";
+            finalColor.classList.add("red");
+            break;
+        case 2:
+            finalColor.innerHTML = "Medium";
+            finalColor.classList.add("yellow");
+            break;
+        case 3:
+            finalColor.innerHTML = "Medium";
+            finalColor.classList.add("yellow");
+            break;
+        case 4:
+            finalColor.innerHTML = "Strong";
+            finalColor.classList.add("green");
+            break;
+        default:
+            finalColor.innerHTML = "WEAK";
+            finalColor.classList.add("red");
+            break;
+        }   
+
+        finalColor.classList.add("center");
+        finalColor.classList.add("strengthShows");
+    upperCase = false;    
+    lowerCase = false;
+    hasNums = false;
+    hasSyms = false;
 
 }
+
+// vars for make password function
+let scramble = false;
 
 // main function for make password
 function makePass() {

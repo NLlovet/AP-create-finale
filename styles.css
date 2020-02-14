@@ -29,6 +29,11 @@ html{
     width: 30px;
   }
   
+  .strengthShows{
+    height:50px;
+    width:100%;
+  }
+
   #demonstrate{
   
     border: black 5px;
