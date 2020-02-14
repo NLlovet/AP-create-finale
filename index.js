@@ -6,11 +6,29 @@ let upperCase = false;
 let lowerCase = false;
 let hasNums = false;
 let hasSyms = false;
+let scrambler = false;
+let phrase;
 
 // makes buttons function
 let passCheck = document.getElementById('go');
 let passScramble = document.getElementById('scramble');
 let passKey = document.getElementById('goMake');
+
+// onclicks
+passCheck.onclick = function () {
+    checkPass();
+}
+
+passScramble.onclick = function () {
+    scrambler = true;
+    makePass();
+    
+}
+
+passKey.onclick = function () {
+   makePass();
+
+}
 
 
 // main function for check password
@@ -140,28 +158,44 @@ function strength() {
 
 }
 
-// vars for make password function
-let scramble = false;
-
 // main function for make password
 function makePass() {
+    if(!scramble){
+        makeRandPass();
+        console.log(`${scramble} is true`)
+    }
+    else{
+        scrambledPass();
+        console.log('scrambled pass running')
+    }
 
+    let newPassword = array.toString();
+    
+    newPassword = newPassword.replace(/,/g, "");
+
+    document.getElementById('newPass').classList.add('strengthShows');
+    document.getElementById('newPass').classList.add('blue');
+    
+    document.getElementById('newPass').innerHTML= `<p if="newPass" class="strengthShows blue"> ${newPassword} </p>`;
+    
+    array.length = 0;
 }
 
-function makeArray() {
-
+function makeRandPass() {
+    array.length = 8;
+    for(let i = 0; i < array.length; i++) {
+        let char = String.fromCharCode(Math.random() * 126 + 33);
+        array.push(char);
+    }
 }
 
-passCheck.onclick = function () {
-    checkPass();
+function scrambledPass () {
+    let phrase = document.getElementById('wordPhrase').value;
+
+    setArray(phrase);
+    for(let i = 0; i < 3; i++) {
+    let char = String.fromCharCode(Math.random() * 64 + 33);
+    array.push(char);
+    }
 }
 
-passScramble.onclick = function () {
-    makePass();
-    scramble = true;
-}
-
-passScramble.onclick = function () {
-    makePass();
-    scramble = false;
-}

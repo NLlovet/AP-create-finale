@@ -17,6 +17,11 @@ html{
   .green{
     background-color: green;
   }
+
+  .blue{
+    color: white;
+    background-color: blue;
+  }
   
   .box {
     width: 100px;
