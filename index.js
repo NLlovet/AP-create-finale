@@ -6,7 +6,7 @@ let upperCase = false;
 let lowerCase = false;
 let hasNums = false;
 let hasSyms = false;
-let scrambler = false;
+var scrambler = true;
 let phrase;
 
 // makes buttons function
@@ -20,13 +20,14 @@ passCheck.onclick = function () {
 }
 
 passScramble.onclick = function () {
-    scrambler = true;
+    scrambler = false;
     makePass();
     
 }
 
 passKey.onclick = function () {
-   makePass();
+  scrambler = true; 
+  makePass();
 
 }
 
@@ -160,7 +161,7 @@ function strength() {
 
 // main function for make password
 function makePass() {
-    if(!scramble){
+    if(scramble){
         makeRandPass();
         console.log(`${scramble} is true`)
     }
@@ -182,8 +183,8 @@ function makePass() {
 }
 
 function makeRandPass() {
-    array.length = 8;
-    for(let i = 0; i < array.length; i++) {
+
+    for(let i = 0; i < 8; i++) {
         let char = String.fromCharCode(Math.random() * 126 + 33);
         array.push(char);
     }
