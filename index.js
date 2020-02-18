@@ -167,11 +167,9 @@ function strength() {
 function makePass() {
     if(scrambler){
         makeRandPass();
-        console.log(`${scramble} is true`)
     }
     else{
         scrambledPass();
-        console.log('scrambled pass running')
     }
 
     let newPassword = array.toString();
@@ -181,7 +179,7 @@ function makePass() {
     document.getElementById('newPass').classList.add('strengthShows');
     document.getElementById('newPass').classList.add('blue');
     
-    document.getElementById('newPass').innerHTML= `<p if="newPass" class="strengthShows blue"> ${newPassword} </p>`;
+    document.getElementById('newPass').innerHTML= `<p if="newPass" class="strengthShows blue center"> ${newPassword} </p>`;
     
     array.length = 0;
 }
@@ -189,7 +187,7 @@ function makePass() {
 function makeRandPass() {
 
     for(let i = 0; i < 8; i++) {
-        let char = String.fromCharCode(Math.random() * 126 + 33);
+        let char = String.fromCharCode(Math.random() * 64 + 33);
         array.push(char);
     }
 }
