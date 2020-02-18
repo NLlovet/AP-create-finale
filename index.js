@@ -20,17 +20,17 @@ passCheck.onclick = function () {
 }
 
 passScramble.onclick = function () {
-    scrambler = false;
+    scrambler = true;
     makePass();
     
 }
 
 passKey.onclick = function () {
-  scrambler = true; 
+  scrambler = false; 
   makePass();
 
 }
-
+// ---------------------------- START OF CHECKPASS ----------------------------
 
 // main function for check password
 function checkPass() {
@@ -152,16 +152,20 @@ function strength() {
 
         finalColor.classList.add("center");
         finalColor.classList.add("strengthShows");
-    upperCase = false;    
-    lowerCase = false;
-    hasNums = false;
-    hasSyms = false;
+        upperCase = false;    
+        lowerCase = false;
+        hasNums = false;
+        hasSyms = false;
 
 }
 
+//  ---------------------------- END OF CHECKPASS ----------------------------
+
+// ---------------------------- START OF MAKEPASS ----------------------------
+
 // main function for make password
 function makePass() {
-    if(scramble){
+    if(scrambler){
         makeRandPass();
         console.log(`${scramble} is true`)
     }
@@ -200,3 +204,4 @@ function scrambledPass () {
     }
 }
 
+// ---------------------------- END OF MAKEPASS ----------------------------
