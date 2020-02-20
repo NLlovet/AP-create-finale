@@ -2,6 +2,7 @@
 let array = [];
 let finalScore = 0;
 let specialChars = /[^A-Z a-z 0-9]/;
+let finalColor = document.getElementById('demonstrate');
 let upperCase = false;    
 let lowerCase = false;
 let hasNums = false;
@@ -46,6 +47,14 @@ function checkPass() {
     checkCase();
     // gauges strength and gives an answer to user
     strength();
+
+    finalColor.classList.add("center");
+    finalColor.classList.add("strengthShows");
+
+    upperCase = false;    
+    lowerCase = false;
+    hasNums = false;
+    hasSyms = false;
 
 }
 
@@ -124,9 +133,8 @@ function strength() {
         finalScore++;
     }
 
-    let finalColor = document.getElementById('demonstrate');
     finalColor.className = "";
-    
+    // Does a check system to add the color and strength of password
     switch(finalScore){
         case 1:
             finalColor.innerHTML = "WEAK";
@@ -150,13 +158,6 @@ function strength() {
             break;
         }   
 
-        finalColor.classList.add("center");
-        finalColor.classList.add("strengthShows");
-        upperCase = false;    
-        lowerCase = false;
-        hasNums = false;
-        hasSyms = false;
-
 }
 
 //  ---------------------------- END OF CHECKPASS ----------------------------
@@ -165,6 +166,7 @@ function strength() {
 
 // main function for make password
 function makePass() {
+    // Checks if to randomly make a password or not
     if(scrambler){
         makeRandPass();
     }
@@ -180,12 +182,12 @@ function makePass() {
     document.getElementById('newPass').classList.add('blue');
     
     document.getElementById('newPass').innerHTML= `<p if="newPass" class="strengthShows blue center"> ${newPassword} </p>`;
-    
+    // resets the array
     array.length = 0;
 }
 
 function makeRandPass() {
-
+    // Randomly makes a password using letters, numbers, or symbols
     for(let i = 0; i < 8; i++) {
         let char = String.fromCharCode(Math.random() * 64 + 33);
         array.push(char);
@@ -194,7 +196,7 @@ function makeRandPass() {
 
 function scrambledPass () {
     let phrase = document.getElementById('wordPhrase').value;
-
+// makes a password secure by adding numbers or symbols to the end
     setArray(phrase);
     for(let i = 0; i < 3; i++) {
     let char = String.fromCharCode(Math.random() * 64 + 33);
